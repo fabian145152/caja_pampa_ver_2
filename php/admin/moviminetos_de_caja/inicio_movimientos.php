@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MOVIMIENTOS DE CAJA</title>
+    <title>DEPOSITOS A MOVILES</title>
     <?php head() ?>
     <script>
         function deleteProd(cod_titular) {
@@ -43,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <body>
 
-    <h1 class="text-center" style="margin: 5px ; ">MOVIMIENTOS DE CAJA</h1>
+    <h1 class="text-center" style="margin: 5px ; ">DEOSITOS A MOVILES</h1>
     <div class="row">
         <style>
             a {

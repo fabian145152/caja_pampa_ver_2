@@ -1,6 +1,6 @@
 <?php
-## conexion a la base de datos
 
+## conexion a la base de datos
 function conexion()
 {
     $con = new mysqli("127.0.0.1", "root", "belgrado", "acaja", 3306);
@@ -12,10 +12,8 @@ function conexion()
 }
 
 ## actualiza semana
-
 function leerArchivoTXT($rutaArchivo)
 {
-
     // Verificar si el archivo existe
     if (file_exists($rutaArchivo)) {
         // Leer el contenido del archivo
@@ -26,8 +24,7 @@ function leerArchivoTXT($rutaArchivo)
     }
 }
 
-
-
+##Pie depagina
 function foot()
 {
     ?>
@@ -51,6 +48,7 @@ function foot()
     <?php
 }
 
+##Encabezado de la pagina
 function head()
 {
     ?>
@@ -65,7 +63,6 @@ function head()
 }
 
 ## Esta funcion se utiliza para borrar todos los archivos de una carpeta
-
 function deleteAllFilesInDirectory($dir)
 {
     // Verificar si el directorio existe
@@ -280,7 +277,7 @@ function ultimosDep($con)
 }
 
 /*
-    Guarda los depositos del movil en caja
+    Guarda los depositos de caja y sumaelvalordelregistroanterior
 */
 function guardaCajaFinal($con, $movil, $fecha, $new_dep_ft, $saldo_ft, $saldo_voucher, $dep_voucher, $usuario, $observaciones)
 {
@@ -400,6 +397,13 @@ function viajesSemSig($con, $movil, $viajes_semana_que_viene)
 // GUARDA DEPOSITOS A LOS MOVILES
 function depositosAMoviles($con, $movil, $fecha, $resto_dep_mov, $estado)
 {
+
+    echo "<br<Resto dep movil dentro de la funcion..." . $resto_dep_mov;
+    if ($resto_dep_mov == 0) {
+        echo "<br>No se realizó depósito porque el importe es cero.";
+        return;
+    }
+
     $stmt = $con->prepare("INSERT INTO depositos_a_moviles (movil, fecha, importe, est) VALUES (?, ?, ?, ?)");
     if (!$stmt) {
         die("<br>Error en la preparación de la consulta: " . $con->error);

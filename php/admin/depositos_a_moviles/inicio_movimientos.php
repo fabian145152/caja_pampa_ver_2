@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MOVIMIENTOS DE CAJA</title>
+    <title>DEPOSITOS</title>
     <?php head() ?>
     <script src="../../../js/jquery-3.4.1.min.js"></script>
     <script src="../../../js/bootstrap.min.js"></script>
@@ -49,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <body>
 
-    <h1 class="text-center" style="margin: 5px ; ">MOVIMIENTOS DE CAJA</h1>
+    <h1 class="text-center" style="margin: 5px ; ">DEOSITOS A MOVILES</h1>
     <div class="row">
         <style>
             a {
@@ -91,6 +91,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
         </div>
     </div>
+    <br>
     <table border="1" style="width: 30%; margin: 0 auto; text-align: center;">
         <thead>
             <tr>
