@@ -3,7 +3,7 @@
 ## conexion a la base de datos
 function conexion()
 {
-    $con = new mysqli("127.0.0.1", "root", "belgrado", "acaja", 3306);
+    $con = new mysqli("127.0.0.1", "root", "", "acaja", 3306);
     if ($con->connect_errno) {
         echo "<br><br><br><br><br>";
         echo "Fallo al conectar a la DDBB: (" . $con->connect_errno . ") " . $con->connect_error;

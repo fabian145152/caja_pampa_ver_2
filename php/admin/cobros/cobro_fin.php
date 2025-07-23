@@ -656,14 +656,16 @@ if ($tot_voucher == 0 && $new_dep_ft > 0 && $debe_semanas > 0 && $deuda_anterior
     echo "<br>Debe semanas: " . $debe_semanas;
     echo "<br>Nuevo deposito: " . $new_dep_ft;
     echo "<br>Deuda: " . $deuda = $new_dep_ft - $debe_semanas;
+    //exit;
     if ($deuda < 0) {
         echo "<br>Saldo negativo, no se puede pagar";
-        echo "<br>Deuda: " . $deuda;
-        $new_dep_ft = abs($new_dep_ft);
         $deuda = abs($deuda);
+        $new_dep_ft = abs($new_dep_ft);
         $total = $x_semana;
+        echo "<br>Deposito en FT: " . $new_dep_ft;
         echo "<br>Deuda anterior: " . $deuda_anterior = $deuda;
         echo "<br>Saldo a favor: " . $saldo_a_favor = 0;
+        //exit;
         actualizaSemPagadas($con, $movil, $total);
         actDeuAntSalaFavor($con, $movil, $deuda_anterior, $saldo_a_favor, $venta_1, $venta_2, $venta_3, $venta_4, $venta_5);
         guardaCajaFinal($con, $movil, $fecha, $new_dep_ft, $saldo_ft, $saldo_voucher, $dep_voucher, $usuario, $observaciones);
@@ -673,16 +675,23 @@ if ($tot_voucher == 0 && $new_dep_ft > 0 && $debe_semanas > 0 && $deuda_anterior
         echo "<br>Saldo_a_favor: " . $saldo_a_favor = 0;
         echo "<br>Deuda anterior: " . $deuda_anterior = 0;
         $total = $x_semana;
+        echo "<br>Deposito en FT: " . $new_dep_ft;
+        //exit;
         actualizaSemPagadas($con, $movil, $total);
         actDeuAntSalaFavor($con, $movil, $deuda_anterior, $saldo_a_favor, $venta_1, $venta_2, $venta_3, $venta_4, $venta_5);
         guardaCajaFinal($con, $movil, $fecha, $new_dep_ft, $saldo_ft, $saldo_voucher, $dep_voucher, $usuario, $observaciones);
     } elseif ($deuda > 0) {
+        $estado = 0;
         echo "<br>Saldo positivo, se puede pagar";
-        echo "<br>Deuda: " . $deuda;
+        echo "<br>Deuda: " . $resto_dep_mov = $deuda;
         echo "<br>Nuevo deposito: " . $new_dep_ft;
-        echo "<br>Saldo a favor: " . $saldo_a_favor = abs($deuda);
+        echo "<br>Saldo a favor: " . $saldo_a_favor = 0;
         echo "<br>Deuda anterior: " . $deuda_anterior = 0;
+        echo "<br>New dep ft: " . $new_dep_ft;
+        echo "<br>Deposito al movil:" . $resto_dep_mov;
         $total = $x_semana;
+        //exit;
+        depositosAMoviles($con, $movil, $fecha, $resto_dep_mov, $estado);
         actualizaSemPagadas($con, $movil, $total);
         actDeuAntSalaFavor($con, $movil, $deuda_anterior, $saldo_a_favor, $venta_1, $venta_2, $venta_3, $venta_4, $venta_5);
         guardaCajaFinal($con, $movil, $fecha, $new_dep_ft, $saldo_ft, $saldo_voucher, $dep_voucher, $usuario, $observaciones);
@@ -699,6 +708,7 @@ if ($tot_voucher == 0 && $new_dep_ft > 0 && $debe_semanas > 0 && $deuda_anterior
     echo "<br>Deuda: " . $tot = $debe_semanas + $ventas;
     echo "<br>Total: " . $deuda = $new_dep_ft - $tot;
     echo "<br><br>";
+    //exit;
     if ($deuda < 0) {
         echo "<br>Saldo negativo, no se puede pagar";
         echo "<br>Deuda: " . $deuda;
@@ -712,6 +722,7 @@ if ($tot_voucher == 0 && $new_dep_ft > 0 && $debe_semanas > 0 && $deuda_anterior
         $venta_5 = 0;
         echo "<br>Deuda anterior: " . $deuda_anterior = $deuda;
         echo "<br>Saldo a favor: " . $saldo_a_favor = 0;
+        //exit;
         actualizaSemPagadas($con, $movil, $total);
         actDeuAntSalaFavor($con, $movil, $deuda_anterior, $saldo_a_favor, $venta_1, $venta_2, $venta_3, $venta_4, $venta_5);
         guardaCajaFinal($con, $movil, $fecha, $new_dep_ft, $saldo_ft, $saldo_voucher, $dep_voucher, $usuario, $observaciones);
@@ -726,24 +737,29 @@ if ($tot_voucher == 0 && $new_dep_ft > 0 && $debe_semanas > 0 && $deuda_anterior
         $venta_3 = 0;
         $venta_4 = 0;
         $venta_5 = 0;
+        //exit;
         actualizaSemPagadas($con, $movil, $total);
         actDeuAntSalaFavor($con, $movil, $deuda_anterior, $saldo_a_favor, $venta_1, $venta_2, $venta_3, $venta_4, $venta_5);
         guardaCajaFinal($con, $movil, $fecha, $new_dep_ft, $saldo_ft, $saldo_voucher, $dep_voucher, $usuario, $observaciones);
     } elseif ($deuda > 0) {
+        $estado = 0;
         echo "<br>Saldo positivo, se puede pagar";
         echo "<br>Deuda: " . $deuda;
         echo "<br>Nuevo deposito: " . $new_dep_ft;
-        echo "<br>Saldo a favor: " . $saldo_a_favor = abs($deuda);
+        echo "<br>Saldo a favor: " . $saldo_a_favor = 0;
         echo "<br>Deuda anterior: " . $deuda_anterior = 0;
+        echo "<br>Resto dep movil:" . $resto_dep_mov = $deuda;
         $total = $x_semana;
         $venta_1 = 0;
         $venta_2 = 0;
         $venta_3 = 0;
         $venta_4 = 0;
         $venta_5 = 0;
+        //exit;
         actualizaSemPagadas($con, $movil, $total);
         actDeuAntSalaFavor($con, $movil, $deuda_anterior, $saldo_a_favor, $venta_1, $venta_2, $venta_3, $venta_4, $venta_5);
         guardaCajaFinal($con, $movil, $fecha, $new_dep_ft, $saldo_ft, $saldo_voucher, $dep_voucher, $usuario, $observaciones);
+        depositosAMoviles($con, $movil, $fecha, $resto_dep_mov, $estado);
     }
     //header("Location: inicio_cobros.php");
     exit;
@@ -758,15 +774,20 @@ if ($tot_voucher == 0 && $new_dep_ft > 0 && $debe_semanas > 0 && $deuda_anterior
     echo "<br>Deuda: " . $tot = $saldo_a_favor - $debe_semanas;
     echo "<br>Total: " . $deuda = $new_dep_ft + $tot;
     echo "<br><br>";
+    //exit;
     if ($deuda < 0) {
         echo "<br>Saldo negativo, no se puede pagar";
-        echo "<br>Deuda: " . $deuda;
-        $new_dep_ft = abs($new_dep_ft);
         $deuda = abs($deuda);
+        echo "<br>Tiene que quedar en deuda anterior: " . $deuda;
+        echo "<br>Deposito en FT: " . $new_dep_ft = abs($new_dep_ft);
+        echo "<br>Saldo a favor: " . $saldo_a_favor;
+        echo "<br>Debe semanas: " . $debe_semanas;
+        $deuda_anterior = $debe_semanas - $saldo_a_favor - $new_dep_ft;
+        echo "<br>Deuda anterior: " . $deuda_anterior;
         $total = $x_semana;
-
-        echo "<br>Deuda anterior: " . $deuda_anterior = $deuda;
-        echo "<br>Saldo a favor: " . $saldo_a_favor = 0;
+        $deuda_anterior = $deuda;
+        $saldo_a_favor = 0;
+        //exit;
         actualizaSemPagadas($con, $movil, $total);
         actDeuAntSalaFavor($con, $movil, $deuda_anterior, $saldo_a_favor, $venta_1, $venta_2, $venta_3, $venta_4, $venta_5);
         guardaCajaFinal($con, $movil, $fecha, $new_dep_ft, $saldo_ft, $saldo_voucher, $dep_voucher, $usuario, $observaciones);
@@ -776,16 +797,24 @@ if ($tot_voucher == 0 && $new_dep_ft > 0 && $debe_semanas > 0 && $deuda_anterior
         echo "<br>Saldo_a_favor: " . $saldo_a_favor = 0;
         echo "<br>Deuda anterior: " . $deuda_anterior = 0;
         $total = $x_semana;
+        //exit;
         actualizaSemPagadas($con, $movil, $total);
         actDeuAntSalaFavor($con, $movil, $deuda_anterior, $saldo_a_favor, $venta_1, $venta_2, $venta_3, $venta_4, $venta_5);
         guardaCajaFinal($con, $movil, $fecha, $new_dep_ft, $saldo_ft, $saldo_voucher, $dep_voucher, $usuario, $observaciones);
     } elseif ($deuda > 0) {
+        $estado = 0;
         echo "<br>Saldo positivo, se puede pagar";
-        echo "<br>Saldo a favor:  " . $deuda;
-        echo "<br>Nuevo deposito: " . $new_dep_ft;
-        echo "<br>Saldo a favor: " . $saldo_a_favor = abs($deuda);
+        echo "<br>Deposito en FT: " . $new_dep_ft = abs($new_dep_ft);
+        echo "<br>Debe semanas:" . $debe_semanas;
+        echo "<br>Saldo_a_favor: " . $saldo_a_favor;
         echo "<br>Deuda anterior: " . $deuda_anterior = 0;
+        $resto_dep_mov = $saldo_a_favor - $debe_semanas + $new_dep_ft;
+        echo "<br>Para depositarle al movil: " . $resto_dep_mov;
         $total = $x_semana;
+        $deuda_anterior = 0;
+        $saldo_a_favor = 0;
+        //exit;
+        depositosAMoviles($con, $movil, $fecha, $resto_dep_mov, $estado);
         actualizaSemPagadas($con, $movil, $total);
         actDeuAntSalaFavor($con, $movil, $deuda_anterior, $saldo_a_favor, $venta_1, $venta_2, $venta_3, $venta_4, $venta_5);
         guardaCajaFinal($con, $movil, $fecha, $new_dep_ft, $saldo_ft, $saldo_voucher, $dep_voucher, $usuario, $observaciones);
@@ -833,21 +862,31 @@ if ($tot_voucher == 0 && $new_dep_ft > 0 && $debe_semanas > 0 && $deuda_anterior
         $venta_3 = 0;
         $venta_4 = 0;
         $venta_5 = 0;
+        //exit;
         actualizaSemPagadas($con, $movil, $total);
         actDeuAntSalaFavor($con, $movil, $deuda_anterior, $saldo_a_favor, $venta_1, $venta_2, $venta_3, $venta_4, $venta_5);
         guardaCajaFinal($con, $movil, $fecha, $new_dep_ft, $saldo_ft, $saldo_voucher, $dep_voucher, $usuario, $observaciones);
     } elseif ($deuda > 0) {
         echo "<br>Saldo positivo, se puede pagar";
+        $estado = 0;
+        echo "<br>Deuda anterior: " . $deuda_anterior = 0;
+        echo "<br>Debe semanas: " . $debe_semanas;
+        echo "<br>Saldo a favor: " . $saldo_a_favor;
+        echo "<br>Ventas: " . $ventas;
         echo "<br>Saldo a favor:  " . $deuda;
         echo "<br>Nuevo deposito: " . $new_dep_ft;
-        echo "<br>Saldo a favor: " . $saldo_a_favor = abs($deuda);
-        echo "<br>Deuda anterior: " . $deuda_anterior = 0;
+        $saldo_a_favor;
+        echo "<br>Resto dep movil: " . $resto_dep_mov = $saldo_a_favor - $debe_semanas - $ventas + $new_dep_ft;
+        $saldo_a_favor = 0;
         $total = $x_semana;
         $venta_1 = 0;
         $venta_2 = 0;
         $venta_3 = 0;
         $venta_4 = 0;
         $venta_5 = 0;
+        $estado = 0;
+        //exit;
+        depositosAMoviles($con, $movil, $fecha, $resto_dep_mov, $estado);
         actualizaSemPagadas($con, $movil, $total);
         actDeuAntSalaFavor($con, $movil, $deuda_anterior, $saldo_a_favor, $venta_1, $venta_2, $venta_3, $venta_4, $venta_5);
         guardaCajaFinal($con, $movil, $fecha, $new_dep_ft, $saldo_ft, $saldo_voucher, $dep_voucher, $usuario, $observaciones);
@@ -863,7 +902,8 @@ if ($tot_voucher == 0 && $new_dep_ft > 0 && $debe_semanas > 0 && $deuda_anterior
     echo "<br>Nuevo deposito: " . $new_dep_ft;
     echo "<br>Deuda anterior: " . $deuda_anterior;
     echo "<br>Deuda: " . $deuda = $new_dep_ft - $debe_semanas - $deuda_anterior;
-
+    //exit;
+    echo "<br><br>";
     if ($deuda < 0) {
         echo "<br>Saldo negativo, no se puede pagar";
         echo "<br>Deuda: " . $deuda;
@@ -872,7 +912,7 @@ if ($tot_voucher == 0 && $new_dep_ft > 0 && $debe_semanas > 0 && $deuda_anterior
         $total = $x_semana;
         echo "<br>Deuda anterior: " . $deuda_anterior = $deuda;
         echo "<br>Saldo a favor: " . $saldo_a_favor = 0;
-        //exit;
+        exit;
         actualizaSemPagadas($con, $movil, $total);
         actDeuAntSalaFavor($con, $movil, $deuda_anterior, $saldo_a_favor, $venta_1, $venta_2, $venta_3, $venta_4, $venta_5);
         guardaCajaFinal($con, $movil, $fecha, $new_dep_ft, $saldo_ft, $saldo_voucher, $dep_voucher, $usuario, $observaciones);
@@ -882,21 +922,24 @@ if ($tot_voucher == 0 && $new_dep_ft > 0 && $debe_semanas > 0 && $deuda_anterior
         echo "<br>Saldo_a_favor: " . $saldo_a_favor = 0;
         echo "<br>Deuda anterior: " . $deuda_anterior = 0;
         $total = $x_semana;
-        //exit;
+        exit;
         actualizaSemPagadas($con, $movil, $total);
         actDeuAntSalaFavor($con, $movil, $deuda_anterior, $saldo_a_favor, $venta_1, $venta_2, $venta_3, $venta_4, $venta_5);
         guardaCajaFinal($con, $movil, $fecha, $new_dep_ft, $saldo_ft, $saldo_voucher, $dep_voucher, $usuario, $observaciones);
     } elseif ($deuda > 0) {
         $estado = 0;
         echo "<br>Saldo positivo, se puede pagar";
+        $estado = 0;
+        $pago = abs($deuda);
         echo "<br>Saldo a favor: " . $deuda;
         echo "<br>Nuevo deposito: " . $new_dep_ft;
         echo "<br>Saldo a favor: " . $saldo_a_favor = 0;
-        echo "<br>Deuda anterior: " . $deuda_anterior = 0;
-        $resto_dep_mov = $deuda;
+        echo "<br>Deuda anterior: " . $deuda_anterior;
+        $resto_dep_mov = $new_dep_ft - $deuda_anterior - $debe_semanas;
+        echo "<br>Resto dep movil: " . $resto_dep_mov;
+        $deuda_anterior = 0;
         $total = $x_semana;
         //exit;
-        depositosAMoviles($con, $movil, $fecha, $resto_dep_mov, $estado);
         actualizaSemPagadas($con, $movil, $total);
         actDeuAntSalaFavor($con, $movil, $deuda_anterior, $saldo_a_favor, $venta_1, $venta_2, $venta_3, $venta_4, $venta_5);
         guardaCajaFinal($con, $movil, $fecha, $new_dep_ft, $saldo_ft, $saldo_voucher, $dep_voucher, $usuario, $observaciones);
@@ -951,16 +994,21 @@ if ($tot_voucher == 0 && $new_dep_ft > 0 && $debe_semanas > 0 && $deuda_anterior
     } elseif ($deuda > 0) {
         echo "<br>Saldo positivo, se puede pagar";
         $estado = 0;
-        echo "<br>Nuevo deposito: " . $new_dep_ft;
         echo "<br>Saldo a favor: " . $saldo_a_favor = 0;
-        echo "<br>Deuda anterior: " . $deuda_anterior = 0;
-        $resto_dep_mov = $deuda;
+        echo "<br><br>";
+        echo "<br>Debe semanas: " . $debe_semanas;
+        echo "<br>Deposito en FT: " . $new_dep_ft;
+        echo "<br>Deuda anterior: " . $deuda_anterior;
+        echo "<br>Ventas: " . $ventas;
+        echo "<br>Resto dep movil: " . $resto_dep_mov = $new_dep_ft - $debe_semanas - $deuda_anterior - $ventas;
+        $deuda_anterior = 0;
         $total = $x_semana;
         $venta_1 = 0;
         $venta_2 = 0;
         $venta_3 = 0;
         $venta_4 = 0;
         $venta_5 = 0;
+        //exit;
         depositosAMoviles($con, $movil, $fecha, $resto_dep_mov, $estado);
         actualizaSemPagadas($con, $movil, $total);
         actDeuAntSalaFavor($con, $movil, $deuda_anterior, $saldo_a_favor, $venta_1, $venta_2, $venta_3, $venta_4, $venta_5);
@@ -1780,7 +1828,7 @@ if ($tot_voucher > 0 && $new_dep_ft > 0 && $debe_semanas == 0 && $deuda_anterior
     echo "<br>Deposito en ft: " . $new_dep_ft;
     $saldo = $resto_dep_mov + $new_dep_ft;
     echo "<br>Saldo: " . $resto_dep_mov = $saldo - $ventas;
-
+    //exit;
     if ($resto_dep_mov == 0) {
         echo "<br>Alcanza justo...";
         $venta_1 = 0;
@@ -1791,7 +1839,7 @@ if ($tot_voucher > 0 && $new_dep_ft > 0 && $debe_semanas == 0 && $deuda_anterior
         $saldo_a_favor = 0;
         $deuda_anterior = 0;
         $new_dep_ft = 0;
-        //exit;
+        exit;
         actDeuAntSalaFavor($con, $movil, $deuda_anterior, $saldo_a_favor, $venta_1, $venta_2, $venta_3, $venta_4, $venta_5);
         viajesSemSig($con, $movil, $viajes_semana_que_viene);
         depositosAMoviles($con, $movil, $fecha, $resto_dep_mov, $estado);
@@ -1810,7 +1858,7 @@ if ($tot_voucher > 0 && $new_dep_ft > 0 && $debe_semanas == 0 && $deuda_anterior
         $saldo_a_favor = 0;
         echo "<br>Deuda anterior: " . $deuda_anterior;
         echo "<br>Deposito en pesos: " . $new_dep_ft;
-        //exit;
+        exit;
         actDeuAntSalaFavor($con, $movil, $deuda_anterior, $saldo_a_favor, $venta_1, $venta_2, $venta_3, $venta_4, $venta_5);
         viajesSemSig($con, $movil, $viajes_semana_que_viene);
         depositosAMoviles($con, $movil, $fecha, $resto_dep_mov, $estado);
@@ -1818,6 +1866,10 @@ if ($tot_voucher > 0 && $new_dep_ft > 0 && $debe_semanas == 0 && $deuda_anterior
         guardaCajaFinal($con, $movil, $fecha, $new_dep_ft, $saldo_ft, $saldo_voucher, $dep_voucher, $usuario, $observaciones);
     } elseif ($resto_dep_mov > 0) {
         echo "<br>Sobra plata...";
+        echo "<br>Ventas: " . $ventas;
+        echo "<br>Total voucher: " . $para_movil;
+        $resto_dep_mov = $para_movil - $ventas + $new_dep_ft;
+        echo "<br>Resto dep mov: " . $resto_dep_mov;
         $venta_1 = 0;
         $venta_2 = 0;
         $venta_3 = 0;
@@ -1825,7 +1877,7 @@ if ($tot_voucher > 0 && $new_dep_ft > 0 && $debe_semanas == 0 && $deuda_anterior
         $venta_5 = 0;
         $saldo_a_favor = 0;
         $deuda_anterior = 0;
-        $new_dep_ft = 0;
+
         echo "<br>Deposito en pesos: " . $new_dep_ft;
         //exit;
         actDeuAntSalaFavor($con, $movil, $deuda_anterior, $saldo_a_favor, $venta_1, $venta_2, $venta_3, $venta_4, $venta_5);
