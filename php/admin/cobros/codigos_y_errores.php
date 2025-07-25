@@ -24,27 +24,27 @@
     <ul>
         <div class="contenedor">
             <div class="columna">
-                <h2>
-                    Sin Voucher</h2>
+                <li>Sin Voucher</li>
+                <li><b>(err 0) demanas = 0</b></li>
                 <li><b>OK OK (err 1) Error deuda anterior menor a cero</b></li>
                 <li><b>OK OK (err 2) Error saldo a favor menor que cero</b></li>
                 <li><b>OK OK (err 3) Error efectivo menor que cero</b></li>
                 <li><b>OK OK (err 4) Error Saldo a favor - deuda anterior mayores a 0</b></li>
                 <li><b>OK OK (cod 5) Solo ventas</b></li>
-                <li><b>OK OK (cod 6) Solo saldo a favor</b></li>                
-                <li><b>(cod 7) Saldo a favor - Ventas - terminar de revisar si no le alcanza la plata</b></li>                
+                <li><b>OK OK (cod 6) Solo saldo a favor</b></li>
+                <li><b>(cod 7) Saldo a favor - Ventas - terminar de revisar si no le alcanza la plata</b></li>
                 <li><b>OK OK (cod 8) Solo deuda anterior</b></li>
                 <li><b>OK OK (cod 9) Deuda anterior - ventas</b></li>
                 <li><b>OK OK (cod 10) Solo semanas</b></li>
                 <li><b>OK OK (cod 11) Ventas - Semanas</b></li>
                 <li><b>OK OK (cod 12) Semanas - Saldo a favor</b></li>
                 <li><b>OK OK (cod 13) Semanas - Saldo a favor - Ventas</b></li>
-                <li><b>OK OK (cod 14) Semanas - Deuda anterior</b></li>                
-                <li><b>OK OK (cod 15) Semanas - deuda anterior - ventas</b></li>                
+                <li><b>OK OK (cod 14) Semanas - Deuda anterior</b></li>
+                <li><b>OK OK (cod 15) Semanas - deuda anterior - ventas</b></li>
                 <li><b>OK OK (cod 16) Deposito Solo</b></li>
                 <li><b>OK OK (cod 17) Deposito - Ventas</b></li>
-                <li><b>OK OK (cod 18) Deposito - saldo a favor</b></li>                
-                <li><b>(cod 19) Deposito - saldo a favor - Ventas</b></li>                
+                <li><b>OK OK (cod 18) Deposito - saldo a favor</b></li>
+                <li><b>(cod 19) Deposito - saldo a favor - Ventas</b></li>
                 <li><b>OK OK (cod 20) Deposito - Deuda anterior</b></li>
                 <li><b>OK OK (cod 21) Deposito - Deuda anterior - Ventas</b></li>
                 <li><b>OK OK (cod 22) Deposito - semanas</b></li>
@@ -53,10 +53,10 @@
                 <li><b>OK OK (cod 25) Deposito - semanas - saldo a favor - ventas</b></li>
                 <li><b>OK OK (cod 26) Deposito - Semanas - Deuda anterior</b></li>
                 <li><b>OK OK (cod 27) Deposito - Semanas - Deuda anterior - Ventas</b></li>
-            </div>
-            <div class="columna">
                 <h2>Con Voucher</h2>
                 <li><b>OK OK (cod 29) Voucher solo</b></li>
+            </div>
+            <div class="columna">
                 <li><b>OK OK (cod 30) Voucher - Ventas</b></li>
                 <li><b>OK OK (cod 31) Voucher - saldo a favor</b></li>
                 <li><b>OK OK (cod 32) Voucher - Saldo a favor - Ventas</b></li>

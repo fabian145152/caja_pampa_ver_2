@@ -278,6 +278,7 @@ function ultimosDep($con)
 
 /*
     Guarda los depositos de caja y sumaelvalordelregistroanterior
+    para resumen de caja
 */
 function guardaCajaFinal($con, $movil, $fecha, $new_dep_ft, $saldo_ft, $saldo_voucher, $dep_voucher, $usuario, $observaciones)
 {
